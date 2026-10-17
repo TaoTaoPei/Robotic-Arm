@@ -705,6 +705,24 @@ namespace damiao
             }
         }
 
+        /**
+         * @brief 打印 motors 中注册的全部 ID
+         */
+        void printMotorIds() const
+        {
+            const std::ios_base::fmtflags old_flags = std::cout.flags();
+
+            std::cout << "motors IDs (" << motors.size() << "):";
+            for (const auto& item : motors)
+            {
+                std::cout << " 0x" << std::uppercase << std::hex
+                          << item.first;
+            }
+            std::cout << std::endl;
+
+            std::cout.flags(old_flags);
+        }
+
         /*
          * @description: read motor register param 读取电机内部寄存器参数，具体寄存器列表请参考达妙的手册
          * @param DM_Motor: motor object 电机对象
